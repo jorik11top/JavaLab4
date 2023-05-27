@@ -11,34 +11,57 @@ public class Elevator {
         this.floorNow = 1;
         this.numberElevator = numberElevator;
     }
-    public int getFloorNow()
-    {
+    public int getFloorNow() {
             return floorNow;
-
     }
+
+    public int getCountFloors() {
+        return countFloors;
+    }
+
+    public Status getStatus(){
+        return status;
+    }
+    public void setStatus(Status status){
+        this.status = status;
+    }
+    public int getNumberElevator(){
+        return this.numberElevator;
+    }
+
+    public ArrayList<Request> getRequests(){
+        return requests;
+    }
+
     public  int up() {
         if(floorNow < countFloors){
             floorNow++;
-            return 1;
+            return floorNow;
         }
         else{
             return -1;
         }
     }
+
     public  int down()  {
         if(floorNow > 1){
             floorNow--;
-            return 1;
+            return floorNow;
         }
         else{
             return -1;
         }
     }
+
     public int getSumTime(Request request){
        return requests.size()*4000+Math.abs(request.getNowFloor()-floorNow)*1000;
     }
 
-    public  void move(){
+    public void addRequset(Request request){
+        requests.add(request);
+    }
+
+    public  void move() throws InterruptedException {
         Request request;
         synchronized (requests){
             if(requests.isEmpty()){
@@ -61,9 +84,11 @@ public class Elevator {
         while (floorNow != request.getNowFloor()){
             if(status == Status.UP){
                 up();
+                Thread.sleep(1500);
+
             }
             else{
-                
+
             }
         }
     }

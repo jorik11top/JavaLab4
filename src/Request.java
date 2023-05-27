@@ -1,7 +1,7 @@
 public class Request {
     private final int nowFloor;
-    private final Trend trend;
-    public Request(int nowFloor,Trend trend){
+    private final Status trend;
+    public Request(int nowFloor,Status trend){
         this.nowFloor = nowFloor;
         this.trend = trend;
     }
@@ -10,7 +10,7 @@ public class Request {
         return nowFloor;
     }
 
-    public Trend getTrend() {
+    public Status getStatus() {
         return trend;
     }
 

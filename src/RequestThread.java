@@ -21,15 +21,16 @@ public class RequestThread extends Thread{
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            Trend[] trends = Trend.values();
+            Status[] trends = {Status.UP,Status.DOWN};
             int randomI = (int) (Math.random()*trends.length);
-            Trend randT = trends[randomI];
+            Status randT = trends[randomI];
             Random a = new Random();
             Request request = new Request(a.nextInt(20)+1,randT);
             synchronized (requests){
                 requests.add(request);
             }
-            System.out.println(request.getNowFloor()+""+request.getTrend());
+            System.out.println(request.getNowFloor()+" "+request.getStatus());
         }
+        System.out.println("Stop");
     }
 }
