@@ -17,6 +17,7 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v2
       with:
+        java-version: '11'
         distribution: 'adopt@1.11'  # Укажите желаемую дистрибуцию Java, например, 'adopt@1.11'
 
     - name: Build with Maven
