@@ -30,6 +30,7 @@ public class ElevatorThread extends Thread{
             do {
                 if(elevator.getFloorNow() > request.getNowFloor()){
                     elevator.down();
+                    System.out.println("Лифт №"+elevator.getNumberElevator()+" на этаже "+elevator.getFloorNow() + " статус "+ elevator.getStatus());
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {
@@ -44,6 +45,7 @@ public class ElevatorThread extends Thread{
                 }
                 else if(elevator.getFloorNow() < request.getNowFloor()){
                     elevator.up();
+                    System.out.println("Лифт №"+elevator.getNumberElevator()+" на этаже "+elevator.getFloorNow() + " статус "+ elevator.getStatus());
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {
