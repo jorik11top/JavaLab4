@@ -1,23 +1,26 @@
-name: Build
+name: Java CI
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:     
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up JDK 11
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Java
       uses: actions/setup-java@v2
       with:
-        java-version: 11
+        distribution: 'adopt@1.11'  # Укажите желаемую дистрибуцию Java, например, 'adopt@1.11'
 
     - name: Build with Maven
       run: mvn package
+
+    - name: Run the application
+      run: java -jar target/your-application.jar
